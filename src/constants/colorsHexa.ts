@@ -1,6 +1,6 @@
 
 export enum ColorsHexaLight {
-    background = "#4A4A4A",
+    background = "#E5E5E5",
     primary = "#FFDD67",
     secondary = "#FFCD38",
 }

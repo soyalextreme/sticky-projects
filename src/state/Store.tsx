@@ -14,7 +14,7 @@ const initialState: IStore = {
     },
     loading: true,
     theme: {
-      dark: true,
+      dark: false,
       colors: ColorsHexaDark,
     },
   },
