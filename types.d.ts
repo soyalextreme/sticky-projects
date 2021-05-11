@@ -2,9 +2,11 @@
 // 10-May-2021 
 // Author: Alejandro AS.
 
-export type ErrorType = {
+export type AlertType = {
     active: boolean;
     msg: string;
+    title: string;
+    error: boolean;
 }
 
 export type AuthType = {
@@ -37,7 +39,7 @@ export type CategoriesType = {
 
 export interface IAppState {
     loading: boolean;
-    error: ErrorType;
+    alert: AlertType;
     auth: undefined | AuthType;
     theme: {
         dark: boolean,

@@ -29,6 +29,18 @@ const reducer = (state: IStore, action: ActionType): IStore => {
                 }
             }
         }
+        case "CLOSE_ALERT": {
+            return {
+                ...state, appState: {
+                    ...state.appState, alert: {
+                        active: false,
+                        msg: "",
+                        error: false,
+                        title: "",
+                    }
+                }
+            }
+        }
         default:
             return {
                 ...state

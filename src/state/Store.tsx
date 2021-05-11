@@ -8,11 +8,13 @@ import { ColorsHexaDark } from "../constants/colorsHexa";
 const initialState: IStore = {
   appState: {
     auth: undefined,
-    error: {
-      msg: "",
-      active: false,
+    alert: {
+      msg: "Esta es una alerta random de esta app. UWU",
+      active: true,
+      error: false,
+      title: "Una alerta random",
     },
-    loading: true,
+    loading: false,
     theme: {
       dark: false,
       colors: ColorsHexaDark,

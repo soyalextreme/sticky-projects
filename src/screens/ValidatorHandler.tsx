@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Text } from "react-native";
-import Loader from "../components/Loader";
+import LoaderContainer from "../components/LoaderContainer";
 import { ColorsHexaDark, ColorsHexaLight } from "../constants/colorsHexa";
 import { StoreContext } from "../state/Store";
 import Login from "./Login";
@@ -14,7 +14,6 @@ const ValidatorHandler: React.FunctionComponent<ValidatorHandlerProps> = () => {
 
   useEffect(() => {
     // theme handles useEffect
-
     if (store.appState.theme.dark) {
       dispatch({ type: "UPDATE_THEME", payload: { colors: ColorsHexaDark } });
     } else {
@@ -23,17 +22,16 @@ const ValidatorHandler: React.FunctionComponent<ValidatorHandlerProps> = () => {
   }, [store.appState.theme.dark]);
 
   useEffect(() => {
+    // validate the user auth
     setTimeout(() => {
       dispatch({ type: "SET_LOADING", payload: { loading: false } });
     }, 5000);
   }, []);
 
-  if (store.appState.loading) return <Loader />;
-
   return (
-    <>
+    <LoaderContainer>
       {store.appState.auth === undefined ? <Login /> : <Text>Bienvenido</Text>}
-    </>
+    </LoaderContainer>
   );
 };
 
