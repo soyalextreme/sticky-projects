@@ -9,10 +9,10 @@ const initialState: IStore = {
   appState: {
     auth: undefined,
     alert: {
-      msg: "Esta es una alerta random de esta app. UWU",
+      msg: "Registrate y Disfruta de nuestra app, tenemos tema dark y ligth 💛",
       active: true,
       error: false,
-      title: "Una alerta random",
+      title: "Bienvenido a Sticky",
     },
     loading: false,
     theme: {

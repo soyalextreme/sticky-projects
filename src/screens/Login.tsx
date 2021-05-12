@@ -1,6 +1,9 @@
 import * as React from "react";
-import { Button, Text, View, StyleSheet } from "react-native";
-import { Colors } from "react-native/Libraries/NewAppScreen";
+import { View, StyleSheet, Image } from "react-native";
+import ChangeTheme from "../components/ChangerTheme";
+import InputText from "../components/InputText";
+import TextTitle from "../components/TextTitle";
+// import { Colors } from "react-native/Libraries/NewAppScreen";
 import { StoreContext } from "../state/Store";
 
 export interface LoginProps {}
@@ -14,21 +17,38 @@ const Login: React.FunctionComponent<LoginProps> = () => {
     Login__Main: {
       backgroundColor: store.appState.theme.colors.background,
       flex: 1,
+      alignItems: "center",
     },
   });
 
-  const handleChangeTheme = (dark: boolean): void => {
-    dispatch({ type: "SET_THEME", payload: { dark } });
-  };
-
   return (
     <View style={dependentStyles.Login__Main}>
-      <Text>No auth, Login</Text>
-      <Button
-        title="Change Theme"
-        onPress={() => handleChangeTheme(!store.appState.theme.dark)}
-        color={store.appState.theme.colors.primary}
-      />
+      <ChangeTheme />
+      <View>
+        <Image
+          source={require("../images/note_paper.png")}
+          style={{ width: 250, height: 250, marginTop: 50 }}
+        />
+      </View>
+      <View
+        style={{
+          width: "70%",
+          padding: 20,
+        }}
+      >
+        <TextTitle text="Your email" style={{ fontSize: 25 }} />
+        <InputText
+          placeholder="tonystark@avengers.com"
+          keybordType="email-address"
+          onChange={() => {}}
+        />
+        <TextTitle text="Your password" style={{ fontSize: 25 }} />
+        <InputText
+          placeholder="Secret Password"
+          keybordType="default"
+          onChange={() => {}}
+        />
+      </View>
     </View>
   );
 };

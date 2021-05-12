@@ -1,6 +1,7 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Button, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { StoreContext } from "../state/Store";
+import { ProgressBar, Colors, Button } from "react-native-paper";
 
 export interface MessageBoxProps {}
 
@@ -24,7 +25,7 @@ const MessageBox: React.FunctionComponent<MessageBoxProps> = () => {
         style={ss.MessageBox__Button}
         onPress={handleCloseModal}
       >
-        <Text>OK</Text>
+        <Text>OK!</Text>
       </TouchableOpacity>
     </View>
   );
@@ -39,6 +40,7 @@ const ss = StyleSheet.create({
     paddingVertical: 40,
     alignItems: "center",
     borderRadius: 30,
+    width: "80%",
   },
 
   MessageBox__title: {

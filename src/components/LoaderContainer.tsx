@@ -12,6 +12,7 @@ const LoaderContainer: React.FunctionComponent<LoaderContainerProps> = (
 
   return (
     <>
+      {props.children}
       {store.appState.loading && (
         <View style={ss.Loader__mainContainer}>
           <ActivityIndicator color="yellow" size="large" />
@@ -22,7 +23,6 @@ const LoaderContainer: React.FunctionComponent<LoaderContainerProps> = (
           <MessageBox />
         </View>
       )}
-      {props.children}
     </>
   );
 };
@@ -36,7 +36,6 @@ const ss = StyleSheet.create({
     position: "absolute",
     width: "100%",
     height: "100%",
-    zIndex: 1,
   },
 });
 
