@@ -80,3 +80,11 @@ export type notiticationMessageContentType = {
 export type PayloadLoadingType = {
     loading: boolean;
 }
+
+
+export type ColorEnumType = {
+    primary: string;
+    secondary: string;
+    background: string;
+    alternative: string;
+}

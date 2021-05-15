@@ -4,12 +4,12 @@ import { StoreContext } from "../state/Store";
 
 export interface LinkRedirectProps {
   text: string;
-  nameToRedirect?: string;
+  fnRedirect?: () => {};
 }
 
 const LinkRedirect: React.FunctionComponent<LinkRedirectProps> = ({
   text,
-  nameToRedirect,
+  fnRedirect,
 }) => {
   const { useContext } = React;
 
@@ -20,7 +20,7 @@ const LinkRedirect: React.FunctionComponent<LinkRedirectProps> = ({
   } = useContext(StoreContext);
 
   return (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={fnRedirect}>
       <Text
         style={{
           color: theme.colors.alternative,

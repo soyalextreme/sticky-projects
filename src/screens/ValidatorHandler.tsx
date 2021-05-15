@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Text } from "react-native";
+import NavigationController from "../NavigationController";
 import LoaderContainer from "../components/LoaderContainer";
 import { ColorsHexaDark, ColorsHexaLight } from "../constants/colorsHexa";
 import { StoreContext } from "../state/Store";
-import Login from "./Login";
+import AppNavigationController from "../AppNavigationController";
 
 export interface ValidatorHandlerProps {}
 
@@ -22,15 +22,26 @@ const ValidatorHandler: React.FunctionComponent<ValidatorHandlerProps> = () => {
   }, [store.appState.theme.dark]);
 
   useEffect(() => {
-    // validate the user auth
-    setTimeout(() => {
-      dispatch({ type: "SET_LOADING", payload: { loading: false } });
-    }, 5000);
+    // loading true
+    dispatch({ type: "SET_LOADING", payload: { loading: true } });
+
+    // validate user
+
+    // set user
+
+    // loading false
+    dispatch({ type: "SET_LOADING", payload: { loading: false } });
   }, []);
+
+  console.log(store.appState);
 
   return (
     <LoaderContainer>
-      {store.appState.auth === undefined ? <Login /> : <Text>Bienvenido</Text>}
+      {store.appState.auth === undefined ? (
+        <NavigationController />
+      ) : (
+        <AppNavigationController />
+      )}
     </LoaderContainer>
   );
 };

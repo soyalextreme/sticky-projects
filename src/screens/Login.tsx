@@ -6,28 +6,25 @@ import TextTitle from "../components/TextTitle";
 import { StoreContext } from "../state/Store";
 import Button from "../components/Button";
 import LinkRedirect from "../components/LinkRedirect";
+import { genDependentGlobalStyleSheet } from "../styles/globalDependtStyles";
 
-export interface LoginProps {}
+export interface LoginProps {
+  navigation: any;
+}
 
-const Login: React.FunctionComponent<LoginProps> = () => {
+const Login: React.FunctionComponent<LoginProps> = ({ navigation }) => {
   const { useContext } = React;
 
   const { store, dispatch } = useContext(StoreContext);
 
   const {
-    appState: { notification },
+    appState: { notification, theme },
   } = store;
 
-  const dependentStyles = StyleSheet.create({
-    Login__Main: {
-      backgroundColor: store.appState.theme.colors.background,
-      flex: 1,
-      alignItems: "center",
-    },
-  });
+  const dependentStyles = genDependentGlobalStyleSheet(theme.colors);
 
   return (
-    <View style={dependentStyles.Login__Main}>
+    <View style={dependentStyles.Screen__Main}>
       <ChangeTheme />
       <View>
         <Image
@@ -57,7 +54,10 @@ const Login: React.FunctionComponent<LoginProps> = () => {
           <Button title="Login Now!" onPress={() => {}} />
         </View>
       </View>
-      <LinkRedirect text="I don't have an account." />
+      <LinkRedirect
+        text="I don't have an account."
+        fnRedirect={() => navigation.navigate("Register")}
+      />
     </View>
   );
 };

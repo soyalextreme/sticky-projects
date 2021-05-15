@@ -7,7 +7,11 @@ import { ColorsHexaDark } from "../constants/colorsHexa";
 
 const initialState: IStore = {
   appState: {
-    auth: undefined,
+    auth: {
+      name: "alex",
+      email: "asasjkdvbak",
+      uid: "asdbnvaksjdb",
+    },
     alert: {
       msg: "Registrate y Disfruta de nuestra app, tenemos tema dark y ligth 💛",
       active: true,
