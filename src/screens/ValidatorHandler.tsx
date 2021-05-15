@@ -4,6 +4,8 @@ import LoaderContainer from "../components/LoaderContainer";
 import { ColorsHexaDark, ColorsHexaLight } from "../constants/colorsHexa";
 import { StoreContext } from "../state/Store";
 import AppNavigationController from "../AppNavigationController";
+import connection from "../db/connection";
+import firebase from "firebase";
 
 export interface ValidatorHandlerProps {}
 
@@ -22,18 +24,26 @@ const ValidatorHandler: React.FunctionComponent<ValidatorHandlerProps> = () => {
   }, [store.appState.theme.dark]);
 
   useEffect(() => {
-    // loading true
+    // useEffect handles auth from firebase
     dispatch({ type: "SET_LOADING", payload: { loading: true } });
 
-    // validate user
+    connection.firebase.auth().onAuthStateChanged((response) => {
+      try {
+        const { uid, email, displayName } = response as firebase.User;
+        dispatch({
+          type: "SET_AUTH",
+          payload: { name: displayName, uid, email },
+        });
+      } catch (error) {
+        dispatch({ type: "SET_AUTH", payload: undefined });
+      }
+    });
 
-    // set user
-
-    // loading false
-    dispatch({ type: "SET_LOADING", payload: { loading: false } });
+    setTimeout(
+      () => dispatch({ type: "SET_LOADING", payload: { loading: false } }),
+      3000
+    );
   }, []);
-
-  console.log(store.appState);
 
   return (
     <LoaderContainer>

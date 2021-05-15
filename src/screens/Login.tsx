@@ -13,7 +13,9 @@ export interface LoginProps {
 }
 
 const Login: React.FunctionComponent<LoginProps> = ({ navigation }) => {
-  const { useContext } = React;
+  const { useContext, useState } = React;
+
+  const [loginInfo, setLoginInfo] = useState({ email: "", password: "" });
 
   const { store, dispatch } = useContext(StoreContext);
 
@@ -42,16 +44,25 @@ const Login: React.FunctionComponent<LoginProps> = ({ navigation }) => {
         <InputText
           placeholder="tonystark@avengers.com"
           keybordType="email-address"
-          onChange={() => {}}
+          onChange={(text: string) => {
+            setLoginInfo({ ...loginInfo, email: text });
+          }}
         />
         <TextTitle text="Your password" style={{ fontSize: 25 }} />
         <InputText
           placeholder="Secret Password"
           keybordType="default"
-          onChange={() => {}}
+          onChange={(text: string) => {
+            setLoginInfo({ ...loginInfo, password: text });
+          }}
         />
         <View style={{ ...ss.Login__buttonContainer }}>
-          <Button title="Login Now!" onPress={() => {}} />
+          <Button
+            title="Login Now!"
+            onPress={() => {
+              console.log(loginInfo);
+            }}
+          />
         </View>
       </View>
       <LinkRedirect

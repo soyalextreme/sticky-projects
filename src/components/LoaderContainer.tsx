@@ -14,7 +14,12 @@ const LoaderContainer: React.FunctionComponent<LoaderContainerProps> = (
     <>
       {props.children}
       {store.appState.loading && (
-        <View style={ss.Loader__mainContainer}>
+        <View
+          style={{
+            ...ss.Loader__mainContainer,
+            backgroundColor: store.appState.theme.colors.background,
+          }}
+        >
           <ActivityIndicator color="yellow" size="large" />
         </View>
       )}
@@ -29,7 +34,6 @@ const LoaderContainer: React.FunctionComponent<LoaderContainerProps> = (
 
 const ss = StyleSheet.create({
   Loader__mainContainer: {
-    backgroundColor: "rgba(0,0,0,0.6)",
     alignItems: "center",
     flexDirection: "column",
     justifyContent: "space-around",

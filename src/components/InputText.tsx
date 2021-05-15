@@ -4,9 +4,10 @@ import { StoreContext } from "../state/Store";
 
 export interface InputTextProps {
   particularStyles?: any;
-  onChange: () => void;
+  onChange: (text: string) => void;
   placeholder: string;
   keybordType: KeyboardType;
+  secureTextEntry?: boolean;
 }
 
 const InputText: React.FunctionComponent<InputTextProps> = ({
@@ -14,6 +15,7 @@ const InputText: React.FunctionComponent<InputTextProps> = ({
   onChange,
   placeholder,
   keybordType,
+  secureTextEntry,
 }) => {
   const {
     store: {
@@ -39,9 +41,10 @@ const InputText: React.FunctionComponent<InputTextProps> = ({
     <>
       <TextInput
         style={{ ...dependentStyle.input, ...particularStyles }}
-        onChange={onChange}
+        onChangeText={onChange}
         placeholder={placeholder}
         keyboardType={keybordType}
+        secureTextEntry={secureTextEntry}
       />
     </>
   );

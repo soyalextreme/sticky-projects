@@ -48,6 +48,13 @@ const reducer = (state: IStore, action: ActionType): IStore => {
                 }
             }
         }
+        case 'SET_AUTH': {
+            return {
+                ...state, appState: {
+                    ...state.appState, auth: action.payload
+                }
+            }
+        }
         default:
             return {
                 ...state
