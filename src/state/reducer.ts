@@ -29,6 +29,13 @@ const reducer = (state: IStore, action: ActionType): IStore => {
                 }
             }
         }
+        case "OPEN_ALERT": {
+            return {
+                ...state, appState: {
+                    ...state.appState, alert: action.payload
+                }
+            }
+        }
         case "CLOSE_ALERT": {
             return {
                 ...state, appState: {

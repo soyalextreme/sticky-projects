@@ -8,5 +8,25 @@ export function genDependentGlobalStyleSheet(colorTheme: ColorEnumType) {
             flex: 1,
             alignItems: "center",
         },
+        Title: {
+            fontSize: 30,
+            color: colorTheme.primary,
+            textAlign: "center",
+            fontWeight: "bold",
+        },
+        SubTitle: {
+            fontSize: 20,
+            color: colorTheme.secondary,
+            textAlign: "center",
+            fontWeight: "normal",
+        },
+        Text: {
+            fontSize: 15,
+            color: colorTheme.secondary,
+            textAlign: "center",
+            fontWeight: "400",
+        },
+
+
     });
 }

@@ -7,6 +7,9 @@ import { StoreContext } from "../state/Store";
 import Button from "../components/Button";
 import LinkRedirect from "../components/LinkRedirect";
 import { genDependentGlobalStyleSheet } from "../styles/globalDependtStyles";
+import validateLoginFields from "../utils/validateLoginFields";
+import { AlertType } from "../../types";
+import connection from "../db/connection";
 
 export interface LoginProps {
   navigation: any;
@@ -24,6 +27,49 @@ const Login: React.FunctionComponent<LoginProps> = ({ navigation }) => {
   } = store;
 
   const dependentStyles = genDependentGlobalStyleSheet(theme.colors);
+
+  const handlePress = () => {
+    const err = validateLoginFields(loginInfo.email, loginInfo.password);
+    let errorMsg = "";
+
+    if (err.emailActive) {
+      errorMsg += "Verify Email";
+    }
+    if (err.passwordActive) {
+      errorMsg += "  Verify Password";
+    }
+
+    if (!err.passwordActive && !err.emailActive) {
+      // verified push the login
+      console.log("login", err);
+
+      /// PENDING LOGIN
+
+      connection.firebase
+        .auth()
+        .signInWithEmailAndPassword(loginInfo.email, loginInfo.password)
+        .then(() => console.log("iniciando sesion"))
+        .catch((error) => {
+          const payload: AlertType = {
+            active: true,
+            error: true,
+            msg: "Verify the credentials, we attepmted but no authorization with this credentials",
+            title: "Ups! Error Login",
+          };
+          dispatch({ type: "OPEN_ALERT", payload });
+          console.error(error);
+        });
+    } else {
+      // show errors
+      const payload: AlertType = {
+        active: true,
+        error: true,
+        msg: errorMsg,
+        title: "Ups! Error Login",
+      };
+      dispatch({ type: "OPEN_ALERT", payload });
+    }
+  };
 
   return (
     <View style={dependentStyles.Screen__Main}>
@@ -55,14 +101,10 @@ const Login: React.FunctionComponent<LoginProps> = ({ navigation }) => {
           onChange={(text: string) => {
             setLoginInfo({ ...loginInfo, password: text });
           }}
+          secureTextEntry={true}
         />
         <View style={{ ...ss.Login__buttonContainer }}>
-          <Button
-            title="Login Now!"
-            onPress={() => {
-              console.log(loginInfo);
-            }}
-          />
+          <Button title="Login Now!" onPress={handlePress} />
         </View>
       </View>
       <LinkRedirect

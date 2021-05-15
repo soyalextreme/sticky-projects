@@ -4,7 +4,7 @@ import { StoreContext } from "../state/Store";
 
 export interface LinkRedirectProps {
   text: string;
-  fnRedirect?: () => {};
+  fnRedirect?: () => void;
 }
 
 const LinkRedirect: React.FunctionComponent<LinkRedirectProps> = ({

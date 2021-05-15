@@ -18,11 +18,19 @@ const MessageBox: React.FunctionComponent<MessageBoxProps> = () => {
   };
 
   return (
-    <View style={ss.MessageBox__container}>
-      <Text style={ss.MessageBox__title}>{alert.title}</Text>
+    <View
+      style={[
+        ss.MessageBox__container,
+        { borderColor: alert.error ? "red" : "yellow" },
+      ]}
+    >
+      <Text style={ss.MessageBox__title}>
+        {alert.error && "💢"}
+        {alert.title}
+      </Text>
       <Text style={ss.MessageBox__body}>{alert.msg}</Text>
       <TouchableOpacity
-        style={ss.MessageBox__Button}
+        style={[ss.MessageBox__Button]}
         onPress={handleCloseModal}
       >
         <Text>OK!</Text>
@@ -34,7 +42,6 @@ const MessageBox: React.FunctionComponent<MessageBoxProps> = () => {
 const ss = StyleSheet.create({
   MessageBox__container: {
     backgroundColor: "white",
-    borderColor: "yellow",
     borderWidth: 4,
     paddingHorizontal: 20,
     paddingVertical: 40,
