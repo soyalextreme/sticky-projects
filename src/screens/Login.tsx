@@ -1,10 +1,11 @@
 import * as React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Button } from "react-native";
 import ChangeTheme from "../components/ChangerTheme";
 import InputText from "../components/InputText";
 import TextTitle from "../components/TextTitle";
 // import { Colors } from "react-native/Libraries/NewAppScreen";
 import { StoreContext } from "../state/Store";
+import { sendPushNotificationAsync } from "./NotificationsContainer";
 
 export interface LoginProps {}
 
@@ -12,6 +13,10 @@ const Login: React.FunctionComponent<LoginProps> = () => {
   const { useContext } = React;
 
   const { store, dispatch } = useContext(StoreContext);
+
+  const {
+    appState: { notification },
+  } = store;
 
   const dependentStyles = StyleSheet.create({
     Login__Main: {
@@ -47,6 +52,15 @@ const Login: React.FunctionComponent<LoginProps> = () => {
           placeholder="Secret Password"
           keybordType="default"
           onChange={() => {}}
+        />
+        <Button
+          title="Iniciar Sesion"
+          onPress={async () =>
+            await notification.pushNotification(notification.tokenPush, {
+              title: "iniciando sesion",
+              body: "random title",
+            })
+          }
         />
       </View>
     </View>

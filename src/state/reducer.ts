@@ -41,6 +41,13 @@ const reducer = (state: IStore, action: ActionType): IStore => {
                 }
             }
         }
+        case 'SET_PUSH_NOTIFICATIONS': {
+            return {
+                ...state, appState: {
+                    ...state.appState, notification: { ...action.payload }
+                }
+            }
+        }
         default:
             return {
                 ...state

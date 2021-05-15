@@ -19,6 +19,10 @@ const initialState: IStore = {
       dark: false,
       colors: ColorsHexaDark,
     },
+    notification: {
+      tokenPush: "",
+      pushNotification: () => {},
+    },
   },
   appData: {
     catergories: [

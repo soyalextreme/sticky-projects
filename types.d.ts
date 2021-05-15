@@ -45,6 +45,10 @@ export interface IAppState {
         dark: boolean,
         colors: any,
     };
+    notification: {
+        tokenPush: string;
+        pushNotification: (token: string, message: notiticationMessageContentType) => void;
+    }
 }
 
 
@@ -65,6 +69,10 @@ export type ActionType = {
     payload: PayloadLoadingType | any,
 }
 
+export type notiticationMessageContentType = {
+    title: string,
+    body: string,
+}
 
 
 // payloads for reducer
