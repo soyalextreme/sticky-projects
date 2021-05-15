@@ -1,11 +1,11 @@
 import * as React from "react";
-import { View, StyleSheet, Image, Button } from "react-native";
+import { View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
 import ChangeTheme from "../components/ChangerTheme";
 import InputText from "../components/InputText";
 import TextTitle from "../components/TextTitle";
-// import { Colors } from "react-native/Libraries/NewAppScreen";
 import { StoreContext } from "../state/Store";
-import { sendPushNotificationAsync } from "./NotificationsContainer";
+import Button from "../components/Button";
+import LinkRedirect from "../components/LinkRedirect";
 
 export interface LoginProps {}
 
@@ -53,18 +53,20 @@ const Login: React.FunctionComponent<LoginProps> = () => {
           keybordType="default"
           onChange={() => {}}
         />
-        <Button
-          title="Iniciar Sesion"
-          onPress={async () =>
-            await notification.pushNotification(notification.tokenPush, {
-              title: "iniciando sesion",
-              body: "random title",
-            })
-          }
-        />
+        <View style={{ ...ss.Login__buttonContainer }}>
+          <Button title="Login Now!" onPress={() => {}} />
+        </View>
       </View>
+      <LinkRedirect text="I don't have an account." />
     </View>
   );
 };
+
+const ss = StyleSheet.create({
+  Login__buttonContainer: {
+    marginVertical: 10,
+    alignItems: "center",
+  },
+});
 
 export default Login;
