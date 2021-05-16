@@ -9,7 +9,7 @@ import TextTitle from "../../components/TextTitle";
 import { v4 as uuidv4 } from "uuid";
 import { StoreContext } from "../../state/Store";
 import { AlertType } from "../../../types";
-import { addProject } from "../../db/projects";
+import { addProject, deleteProject, updateProject } from "../../db/projects";
 
 export interface AppAddProjectProps {
   navigation: any;
@@ -27,6 +27,17 @@ const AppAddProject: React.FunctionComponent<AppAddProjectProps> = ({
   });
 
   const { store, dispatch } = React.useContext(StoreContext);
+  const { mod, current } = route.params;
+
+  React.useEffect(() => {
+    if (mod) {
+      setData({
+        name: current.name,
+        description: current.description,
+        id: current.id,
+      });
+    }
+  }, []);
 
   const validateErrors = (): boolean => {
     if (!data.name) {
@@ -68,6 +79,36 @@ const AppAddProject: React.FunctionComponent<AppAddProjectProps> = ({
     }
   };
 
+  const handleUpdateProject = async () => {
+    const errors = validateErrors();
+
+    if (!errors) {
+      // peticon al servidor
+      dispatch({ type: "SET_LOADING", payload: { loading: true } });
+      await updateProject(store.appState.auth?.uid as string, data, data.id);
+      const arrayFiltered = store.appData.projects.filter(
+        (project) => project.id !== data.id
+      );
+      arrayFiltered.push(data);
+
+      dispatch({ type: "SET_PROJECTS", payload: arrayFiltered });
+      navigation.navigate("Projects");
+      dispatch({ type: "SET_LOADING", payload: { loading: false } });
+    }
+  };
+
+  const handleDeleteProject = async () => {
+    await deleteProject(store.appState.auth?.uid as string, data.id);
+
+    const arrayFiltered = store.appData.projects.filter(
+      (project) => project.id !== data.id
+    );
+
+    dispatch({ type: "SET_PROJECTS", payload: arrayFiltered });
+
+    navigation.navigate("Projects");
+  };
+
   return (
     <MainScreenContainer>
       <View style={{ marginVertical: 25 }}>
@@ -89,15 +130,25 @@ const AppAddProject: React.FunctionComponent<AppAddProjectProps> = ({
         <InputText
           placeholder="Some creative description."
           keybordType="default"
-          particularStyles={{ height: "50%" }}
+          particularStyles={{ height: "40%" }}
           onChange={(text) => {
             setData({ ...data, description: text });
           }}
           controlledValue={data.description}
         />
       </View>
-      <View style={{ width: "60%" }}>
-        <Button title="Save Project" onPress={handleAddProject} />
+      <View
+        style={{
+          width: "60%",
+          height: "20%",
+          justifyContent: "space-between",
+        }}
+      >
+        <Button
+          title={mod ? "Update" : "Save Project"}
+          onPress={mod ? handleUpdateProject : handleAddProject}
+        />
+        {mod && <Button title="Eliminar" onPress={handleDeleteProject} />}
       </View>
     </MainScreenContainer>
   );

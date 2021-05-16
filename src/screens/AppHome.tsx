@@ -37,6 +37,13 @@ const AppHome: React.FunctionComponent<AppHomeProps> = ({ navigation }) => {
 
   const dependetStyles = genDependentGlobalStyleSheet(theme.colors);
 
+  const handleLogout = () => {
+    connection.firebase.auth().signOut();
+
+    dispatch({ type: "REPLACE_CATEGORIES", payload: [] });
+    dispatch({ type: "SET_PROJECTS", payload: [] });
+  };
+
   return (
     <View style={{ ...dependetStyles.Screen__Main }}>
       <NavApp navigation={navigation} />
@@ -52,10 +59,7 @@ const AppHome: React.FunctionComponent<AppHomeProps> = ({ navigation }) => {
           Hope you get more productive and achive your goal. 🌟
         </Text>
         <View style={{ width: "50%", marginVertical: 20 }}>
-          <LinkRedirect
-            text="Logout Now"
-            fnRedirect={() => connection.firebase.auth().signOut()}
-          />
+          <LinkRedirect text="Logout Now" fnRedirect={handleLogout} />
         </View>
       </View>
       <ChangeTheme />

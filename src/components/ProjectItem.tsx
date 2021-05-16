@@ -1,18 +1,21 @@
 import * as React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { ProjectType } from "../../types";
 import { deleteProject } from "../db/projects";
 import { StoreContext } from "../state/Store";
+import MessageBox from "./MessageBox";
 import TextP from "./TextP";
 import TextTitle from "./TextTitle";
 
 export interface ProjectItemProps {
   item: ProjectType;
+  navigation: any;
 }
 
-const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({ item }) => {
-  console.log("item", item);
-
+const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
+  item,
+  navigation,
+}) => {
   const {
     store: {
       appState: {
@@ -24,14 +27,6 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({ item }) => {
     dispatch,
   } = React.useContext(StoreContext);
 
-  const handleDelete = async () => {
-    await deleteProject(auth?.uid as string, item.id);
-
-    const arrayFiltered = projects.filter((project) => project.id !== item.id);
-
-    dispatch({ type: "SET_PROJECTS", payload: arrayFiltered });
-  };
-
   return (
     <TouchableOpacity
       style={{
@@ -42,7 +37,12 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({ item }) => {
         marginVertical: 20,
         width: 300,
       }}
-      onLongPress={handleDelete}
+      onLongPress={() =>
+        navigation.navigate("Add Project", {
+          mod: true,
+          current: item,
+        })
+      }
     >
       <TextTitle
         text={`🔻${item.name}`}

@@ -48,7 +48,7 @@ const AppProjects: React.FunctionComponent<AppProjectsProps> = ({
         {projects.length === 0 && (
           <TextTitle text="Add your first project now!" />
         )}
-        <ProjectsList />
+        <ProjectsList navigation={navigation} />
       </View>
     </MainScreenContainer>
   );

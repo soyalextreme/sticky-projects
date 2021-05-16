@@ -4,9 +4,13 @@ import { StoreContext } from "../state/Store";
 import ProjectItem from "./ProjectItem";
 import TextTitle from "./TextTitle";
 
-export interface ProjectsListProps {}
+export interface ProjectsListProps {
+  navigation: any;
+}
 
-const ProjectsList: React.FunctionComponent<ProjectsListProps> = () => {
+const ProjectsList: React.FunctionComponent<ProjectsListProps> = ({
+  navigation,
+}) => {
   const {
     store: {
       appData: { projects },
@@ -18,7 +22,7 @@ const ProjectsList: React.FunctionComponent<ProjectsListProps> = () => {
     <ScrollView style={{ width: "120%" }}>
       {projects.map((project) => (
         <>
-          <ProjectItem item={project} />
+          <ProjectItem item={project} navigation={navigation} />
         </>
       ))}
     </ScrollView>
