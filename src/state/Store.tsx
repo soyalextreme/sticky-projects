@@ -9,10 +9,10 @@ const initialState: IStore = {
   appState: {
     auth: undefined,
     alert: {
-      msg: "Registrate y Disfruta de nuestra app, tenemos tema dark y ligth 💛",
-      active: true,
+      msg: "",
+      active: false,
       error: false,
-      title: "Bienvenido a Sticky",
+      title: "",
     },
     loading: false,
     theme: {
@@ -25,16 +25,7 @@ const initialState: IStore = {
     },
   },
   appData: {
-    catergories: [
-      {
-        desc: "Trabajo",
-        color: "#FA897B",
-      },
-      {
-        desc: "Escuela",
-        color: "#86E3CE",
-      },
-    ],
+    catergories: [],
     projects: [],
     stickyDefaultNote: [],
     stickyTimerNotes: [],

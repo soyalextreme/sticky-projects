@@ -27,6 +27,7 @@ const LinkRedirect: React.FunctionComponent<LinkRedirectProps> = ({
           borderBottomWidth: 2,
           borderBottomColor: theme.colors.alternative,
           fontWeight: "normal",
+          fontSize: 18,
         }}
       >
         {text}

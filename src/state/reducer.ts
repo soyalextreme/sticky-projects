@@ -48,6 +48,29 @@ const reducer = (state: IStore, action: ActionType): IStore => {
                 }
             }
         }
+
+        case "ADD_CATEGORY": {
+            return {
+                ...state, appData: {
+                    ...state.appData, catergories: [
+                        ...state.appData.catergories,
+                        action.payload
+                    ]
+                }
+            }
+        }
+
+        case "REPLACE_CATEGORIES": {
+            return {
+                ...state, appData: {
+                    ...state.appData, catergories: [
+                        ...action.payload
+                    ]
+                }
+            }
+        }
+
+
         case 'SET_PUSH_NOTIFICATIONS': {
             return {
                 ...state, appState: {

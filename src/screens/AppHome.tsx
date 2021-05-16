@@ -1,19 +1,65 @@
 import * as React from "react";
-import { Text } from "react-native";
+import { Text, View } from "react-native";
+import ChangeTheme from "../components/ChangerTheme";
 import LinkRedirect from "../components/LinkRedirect";
+import NavApp from "../components/NavApp";
 import connection from "../db/connection";
+import { StoreContext } from "../state/Store";
+import { genDependentGlobalStyleSheet } from "../styles/globalDependtStyles";
 
-export interface AppHomeProps {}
+export interface AppHomeProps {
+  navigation: any;
+}
 
-const AppHome: React.FunctionComponent<AppHomeProps> = () => {
+const AppHome: React.FunctionComponent<AppHomeProps> = ({ navigation }) => {
+  const {
+    dispatch,
+    store: {
+      appState: { theme, auth },
+    },
+  } = React.useContext(StoreContext);
+
+  React.useEffect(() => {
+    // mensaje de bienvenida a la app
+
+    let messageIntroductions = {
+      msg: "Registrate y Disfruta de nuestra app, tenemos tema dark y ligth 💛",
+      active: true,
+      error: false,
+      title: "Bienvenido a Sticky",
+    };
+
+    setTimeout(
+      () => dispatch({ type: "OPEN_ALERT", payload: messageIntroductions }),
+      2000
+    );
+  }, []);
+
+  const dependetStyles = genDependentGlobalStyleSheet(theme.colors);
+
   return (
-    <>
-      <Text>Home App</Text>
-      <LinkRedirect
-        text="Cerrar Sesion"
-        fnRedirect={() => connection.firebase.auth().signOut()}
-      />
-    </>
+    <View style={{ ...dependetStyles.Screen__Main }}>
+      <NavApp navigation={navigation} />
+      <View
+        style={{
+          height: "100%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ ...dependetStyles.Title }}>Welcome, Lets Start! </Text>
+        <Text style={dependetStyles.Text}>
+          Hope you get more productive and achive your goal. 🌟
+        </Text>
+        <View style={{ width: "50%", marginVertical: 20 }}>
+          <LinkRedirect
+            text="Logout Now"
+            fnRedirect={() => connection.firebase.auth().signOut()}
+          />
+        </View>
+      </View>
+      <ChangeTheme />
+    </View>
   );
 };
 

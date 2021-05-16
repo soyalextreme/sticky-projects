@@ -20,7 +20,7 @@ const ChangeTheme: React.FunctionComponent<ChangeThemeProps> = () => {
 
   return (
     <TouchableOpacity
-      style={{ position: "absolute", top: 30, right: 30 }}
+      style={{ position: "absolute", bottom: 40, right: 30 }}
       onPress={handleChangeTheme}
     >
       <Text style={{ fontSize: 30 }}>{!dark ? "🌞" : "🌚"}</Text>

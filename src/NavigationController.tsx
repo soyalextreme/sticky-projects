@@ -3,8 +3,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
-import { AuthType } from "../types";
-import AppHome from "./screens/AppHome";
 
 export interface NavigationControllerProps {}
 

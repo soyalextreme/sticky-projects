@@ -17,24 +17,28 @@ export type AuthType = {
 
 export type ProjectType = {
     name: string;
-    uid: string;
+    id: string;
     description: string;
 }
 
 export type StickyTimerNoteType = {
     body: string;
     timeFraction: number;
+    id: string;
+    title: string;
 }
 
 export type StickyDefaulNoteType = {
     title: string;
     body: string;
     done: boolean;
+    id: string;
 }
 
 export type CategoriesType = {
     desc: string;
     color: string;
+    id: string;
 }
 
 export interface IAppState {
