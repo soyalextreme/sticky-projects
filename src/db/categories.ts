@@ -22,7 +22,7 @@ export const addCategories = async (uid: string, category: CategoriesType, uidCa
 export const updateCategory = async (uid: string, category: CategoriesType, idCategory: string) => {
     const dbRef = connection.db.collection(`categories${uid}`).doc(idCategory);
     await dbRef.set({
-        category
+        ...category
     });
 }
 

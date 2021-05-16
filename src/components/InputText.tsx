@@ -8,6 +8,7 @@ export interface InputTextProps {
   placeholder: string;
   keybordType: KeyboardType;
   secureTextEntry?: boolean;
+  controlledValue?: string;
 }
 
 const InputText: React.FunctionComponent<InputTextProps> = ({
@@ -16,6 +17,7 @@ const InputText: React.FunctionComponent<InputTextProps> = ({
   placeholder,
   keybordType,
   secureTextEntry,
+  controlledValue,
 }) => {
   const {
     store: {
@@ -45,6 +47,7 @@ const InputText: React.FunctionComponent<InputTextProps> = ({
         placeholder={placeholder}
         keyboardType={keybordType}
         secureTextEntry={secureTextEntry}
+        value={controlledValue}
       />
     </>
   );

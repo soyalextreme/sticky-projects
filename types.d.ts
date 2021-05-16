@@ -92,3 +92,9 @@ export type ColorEnumType = {
     background: string;
     alternative: string;
 }
+
+
+export type UpdateCategoryType = {
+    categoryCurrent: CategoriesType,
+    updateActive: boolean,
+}

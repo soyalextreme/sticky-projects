@@ -5,7 +5,6 @@ import AppHome from "./screens/AppHome";
 import { StoreContext } from "./state/Store";
 import AppQuickNotes from "./screens/quickNotes/AppQuickNotes";
 import AppProjects from "./screens/projects/AppProjects";
-import ChangeTheme from "./components/ChangerTheme";
 import AppCategories from "./screens/categories/AppCategories";
 import AddCategories from "./screens/categories/AddCategories";
 

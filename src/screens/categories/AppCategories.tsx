@@ -29,6 +29,7 @@ const AppCategories: React.FunctionComponent<AppCategoriesProps> = ({
       dispatch({ type: "SET_LOADING", payload: { loading: false } });
     };
     fetchCategories();
+    console.log(store);
 
     // console.log(catergories);
   }, []);
@@ -54,7 +55,14 @@ const AppCategories: React.FunctionComponent<AppCategoriesProps> = ({
   };
 
   const handleAdd = () => {
-    navigation.navigate("Add Category");
+    navigation.navigate("Add Category", {
+      updateActive: false,
+      categoryCurrent: {
+        desc: "",
+        id: "",
+        color: "",
+      },
+    });
   };
 
   return (
@@ -93,6 +101,12 @@ const AppCategories: React.FunctionComponent<AppCategoriesProps> = ({
               borderRadius: 30,
             }}
             onLongPress={() => handleDelete(item)}
+            onPress={() =>
+              navigation.navigate("Add Category", {
+                updateActive: true,
+                categoryCurrent: item,
+              })
+            }
           >
             <Text style={{ fontSize: 20, textAlign: "center" }}>
               {item.desc}
