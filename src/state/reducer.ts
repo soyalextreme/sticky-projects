@@ -62,7 +62,7 @@ const reducer = (state: IStore, action: ActionType): IStore => {
             return {
                 ...state, appData: {
                     ...state.appData, projects: [
-                        action.payload,
+                        ...action.payload,
                     ]
                 }
             }

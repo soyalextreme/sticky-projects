@@ -24,8 +24,8 @@ const TextTitle: React.FunctionComponent<TextTitleProps> = ({
         color: theme.colors.secondary,
         fontWeight: "bold",
         textAlign: "center",
-        ...style,
         fontSize: 25,
+        ...style,
       }}
     >
       {text}
