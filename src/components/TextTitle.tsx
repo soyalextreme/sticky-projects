@@ -25,6 +25,7 @@ const TextTitle: React.FunctionComponent<TextTitleProps> = ({
         fontWeight: "bold",
         textAlign: "center",
         ...style,
+        fontSize: 25,
       }}
     >
       {text}

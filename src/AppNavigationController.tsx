@@ -6,7 +6,8 @@ import { StoreContext } from "./state/Store";
 import AppQuickNotes from "./screens/quickNotes/AppQuickNotes";
 import AppProjects from "./screens/projects/AppProjects";
 import AppCategories from "./screens/categories/AppCategories";
-import AddCategories from "./screens/categories/AddCategories";
+import AddCategories from "./screens/categories/AppAddCategories";
+import AppAddProject from "./screens/projects/AppAddProject";
 
 export interface AppNavigationControllerProps {}
 
@@ -29,6 +30,7 @@ const AppNavigationController: React.FunctionComponent<AppNavigationControllerPr
           <Stack.Screen name="Home" component={AppHome} />
           <Stack.Screen name="Quick Notes" component={AppQuickNotes} />
           <Stack.Screen name="Projects" component={AppProjects} />
+          <Stack.Screen name="Add Project" component={AppAddProject} />
           <Stack.Screen name="Categories" component={AppCategories} />
           <Stack.Screen name="Add Category" component={AddCategories} />
         </Stack.Navigator>

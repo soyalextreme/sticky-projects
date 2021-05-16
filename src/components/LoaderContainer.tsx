@@ -20,7 +20,7 @@ const LoaderContainer: React.FunctionComponent<LoaderContainerProps> = (
             backgroundColor: store.appState.theme.colors.background,
           }}
         >
-          <ActivityIndicator color="yellow" size="large" />
+          <ActivityIndicator color="tomato" size="large" />
         </View>
       )}
       {store.appState.alert.active && (

@@ -14,7 +14,7 @@ const TextP: React.FunctionComponent<TextPProps> = ({ text }) => {
     store.appState.theme.colors
   );
 
-  return <Text style={{ ...globalStyles.Text }}>{text}</Text>;
+  return <Text style={{ ...globalStyles.Text, fontSize: 20 }}>{text}</Text>;
 };
 
 export default TextP;
