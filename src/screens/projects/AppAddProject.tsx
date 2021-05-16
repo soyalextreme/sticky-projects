@@ -9,6 +9,7 @@ import TextTitle from "../../components/TextTitle";
 import { v4 as uuidv4 } from "uuid";
 import { StoreContext } from "../../state/Store";
 import { AlertType } from "../../../types";
+import { addProject } from "../../db/projects";
 
 export interface AppAddProjectProps {
   navigation: any;
@@ -54,11 +55,16 @@ const AppAddProject: React.FunctionComponent<AppAddProjectProps> = ({
     return false;
   };
 
-  const handleAddProject = () => {
+  const handleAddProject = async () => {
     const errors = validateErrors();
 
     if (!errors) {
-      console.log("Todo listo");
+      // peticon al servidor
+      dispatch({ type: "SET_LOADING", payload: { loading: true } });
+      await addProject(store.appState.auth?.uid as string, data, data.id);
+      navigation.navigate("Projects");
+      dispatch({ type: "ADD_PROJECT", payload: data });
+      dispatch({ type: "SET_LOADING", payload: { loading: false } });
     }
   };
 

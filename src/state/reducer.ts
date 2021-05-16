@@ -48,6 +48,25 @@ const reducer = (state: IStore, action: ActionType): IStore => {
                 }
             }
         }
+        case "ADD_PROJECT": {
+            return {
+                ...state, appData: {
+                    ...state.appData, projects: [
+                        ...state.appData.projects, action.payload,
+                    ]
+                }
+            }
+        }
+
+        case "SET_PROJECTS": {
+            return {
+                ...state, appData: {
+                    ...state.appData, projects: [
+                        action.payload,
+                    ]
+                }
+            }
+        }
 
         case "ADD_CATEGORY": {
             return {
