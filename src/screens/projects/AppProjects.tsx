@@ -42,10 +42,6 @@ const AppProjects: React.FunctionComponent<AppProjectsProps> = ({
           navigation.navigate("Add Project", { update: false });
         }}
       />
-      <TextTitle
-        text="Your projects"
-        style={{ fontSize: 20, marginVertical: 40 }}
-      />
       <View>
         {projects.length === 0 && (
           <TextTitle text="Add your first project now!" />

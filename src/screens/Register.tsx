@@ -111,7 +111,7 @@ const Register: React.FunctionComponent<RegisterProps> = ({ navigation }) => {
             secureTextEntry={true}
           />
         </View>
-        <View style={{ marginVertical: 40 }}>
+        <View style={{ marginVertical: 20 }}>
           <Button title="Create Account" onPress={handleRegister} />
         </View>
 

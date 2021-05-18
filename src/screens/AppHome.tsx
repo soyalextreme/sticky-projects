@@ -23,7 +23,7 @@ const AppHome: React.FunctionComponent<AppHomeProps> = ({ navigation }) => {
     // mensaje de bienvenida a la app
 
     let messageIntroductions = {
-      msg: "Registrate y Disfruta de nuestra app, tenemos tema dark y ligth 💛",
+      msg: "Registrate y Disfruta de nuestra app, tenemos tema dark  💛",
       active: true,
       error: false,
       title: "Bienvenido a Sticky",
