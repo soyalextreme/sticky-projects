@@ -19,7 +19,6 @@ export interface AddNotesProps {
 const AddNotes: React.FunctionComponent<AddNotesProps> = ({ route }) => {
   const { projectId, mod, navigation, projectName } = route.params;
   const { store, dispatch } = React.useContext(StoreContext);
-  const [pickerValue, setPickerValue] = React.useState("");
 
   const [data, setData] = React.useState<StickyDefaulNoteType>({
     body: "",
@@ -71,8 +70,6 @@ const AddNotes: React.FunctionComponent<AddNotesProps> = ({ route }) => {
       dispatch({ type: "OPEN_ALERT", payload: msg });
       return true;
     }
-    setData({ ...data, categoryId: pickerValue });
-
     if (!data.categoryId) {
       let msg: AlertType = {
         active: true,
@@ -112,8 +109,10 @@ const AddNotes: React.FunctionComponent<AddNotesProps> = ({ route }) => {
       <View style={{ marginVertical: -100, height: "10%" }}>
         <TextP text="Your category" />
         <CategoryPicker
-          selectedValue={pickerValue}
-          setSelectedValue={(value: string) => setPickerValue(value)}
+          selectedValue={data.categoryId}
+          setSelectedValue={(value: string) =>
+            setData({ ...data, categoryId: value })
+          }
         />
       </View>
       <View style={{ width: "100%", marginTop: 150 }}>

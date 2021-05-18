@@ -46,7 +46,7 @@ const AppNotes: React.FunctionComponent<AppNotesProps> = ({
   };
 
   // const fetchCategories = async () => {
-  //   const arr = await getCategories(store.appState.auth?.uid as string);
+  // const arr = await getCategories(store.appState.auth?.uid as string);
   //   dispatch({ type: "REPLACE_CATEGORIES", payload: arr });
   // };
 
@@ -72,11 +72,11 @@ const AppNotes: React.FunctionComponent<AppNotesProps> = ({
 
   return (
     <MainScreenContainer>
-      <TextTitle text={`Proyecto ${projectName}`} />
+      <TextTitle style={{ fontSize: 20 }} text={`Proyecto ${projectName}`} />
       <View>
         <Button
           title="Add new note"
-          style={{ fontSize: 30 }}
+          style={{ fontSize: 15 }}
           onPress={() =>
             navigation.navigate("Add Note", {
               projectId,
@@ -88,17 +88,19 @@ const AppNotes: React.FunctionComponent<AppNotesProps> = ({
         />
       </View>
       <View>
-        <TextTitle text="Your project notes" style={{ marginVertical: 30 }} />
         {stickyDefaultNote.length === 0 ? (
           <TextP text="Empty notes for this project" />
         ) : (
           <ScrollView
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
+            // alwaysBounceVertical={true}
             style={{
               borderTopWidth: 2,
               borderColor: theme.colors.alternative,
-              paddingHorizontal: 10,
+              paddingHorizontal: 20,
+              paddingVertical: -60,
+              width: "100%",
             }}
           >
             {stickyDefaultNote.map((note) => (
@@ -107,20 +109,19 @@ const AppNotes: React.FunctionComponent<AppNotesProps> = ({
                 style={{
                   backgroundColor: "white",
                   paddingHorizontal: 10,
-                  paddingVertical: 30,
                   borderRadius: 30,
                   alignItems: "center",
-                  marginVertical: 30,
-                  width: "100%",
+                  marginVertical: 10,
+                  paddingVertical: 30,
                 }}
                 onLongPress={() => handleDelete(note.id)}
               >
                 <TextP
                   text={note.title}
-                  style={{ color: "black", fontWeight: "bold", fontSize: 25 }}
+                  style={{ color: "black", fontWeight: "bold", fontSize: 20 }}
                 />
                 <TextP
-                  style={{ marginVertical: 20, color: "black" }}
+                  style={{ marginVertical: 10, color: "black" }}
                   text={note.body}
                 />
                 <CategoryLooker categoryId={note.categoryId} />
@@ -135,13 +136,14 @@ const AppNotes: React.FunctionComponent<AppNotesProps> = ({
                       backgroundColor: !note.done ? "red" : "green",
                       textDecorationLine: note.done ? "line-through" : "none",
                       color: "white",
-                      fontSize: 20,
+                      fontSize: 15,
                     }}
                     text={note.done ? "Completed" : "Pending"}
                   />
                 </TouchableOpacity>
               </TouchableOpacity>
             ))}
+            <View style={{ height: "30%" }}></View>
           </ScrollView>
         )}
       </View>
