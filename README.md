@@ -4,7 +4,7 @@
 
 #### Made with ❤
 
-[Test and download the app for android](https://optimistic-heisenberg-b17219.netlify.app/)
+[Test and download the app for android](tricky-ground.surge.sh)
 
 Set up steps
 
