@@ -4,7 +4,7 @@
 
 #### Made with ❤
 
-[Test and download the app for android](https://www.google.com)
+[Test and download the app for android](https://optimistic-heisenberg-b17219.netlify.app/)
 
 Set up steps
 
@@ -25,7 +25,7 @@ npm run start # run develper mode
 
 ## Preview for the app
 
-![PreviewLogin](./captures/login_dark.png|width=100)
+![PreviewLogin](./captures/login_dark.png)
 ![PreviewLogin](./captures/login_light.png)
 ![Screenshot](./captures/Screenshot_1621369971.png)
 ![Screenshot](./captures/Screenshot_1621369993.png)
