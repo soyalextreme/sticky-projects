@@ -25,7 +25,7 @@ npm run start # run develper mode
 
 ## Preview for the app
 
-![PreviewLogin](./captures/login_dark.png | width=100 )
+![PreviewLogin](./captures/login_dark.png|width=100)
 ![PreviewLogin](./captures/login_light.png)
 ![Screenshot](./captures/Screenshot_1621369971.png)
 ![Screenshot](./captures/Screenshot_1621369993.png)
