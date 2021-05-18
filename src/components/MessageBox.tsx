@@ -41,7 +41,7 @@ const MessageBox: React.FunctionComponent<MessageBoxProps> = () => {
 
 const ss = StyleSheet.create({
   MessageBox__container: {
-    backgroundColor: "white",
+    backgroundColor: "tomato",
     borderWidth: 4,
     paddingHorizontal: 20,
     paddingVertical: 40,
@@ -51,19 +51,22 @@ const ss = StyleSheet.create({
   },
 
   MessageBox__title: {
-    fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 30,
     textAlign: "center",
+    color: "white",
+    fontWeight: "bold",
   },
   MessageBox__body: {
     marginVertical: 25,
     textAlign: "center",
+    color: "white",
+    fontSize: 20,
   },
   MessageBox__Button: {
-    backgroundColor: "yellow",
     paddingHorizontal: 50,
     paddingVertical: 10,
     borderRadius: 30,
+    backgroundColor: "white",
   },
 });
 

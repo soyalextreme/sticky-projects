@@ -1,5 +1,4 @@
-import React, { PropsWithChildren, useReducer } from "react"
-import { AppState } from "react-native";
+
 import { ActionType, IStore } from "../../types";
 
 
@@ -88,8 +87,6 @@ const reducer = (state: IStore, action: ActionType): IStore => {
                 }
             }
         }
-
-
         case 'SET_PUSH_NOTIFICATIONS': {
             return {
                 ...state, appState: {
@@ -101,6 +98,23 @@ const reducer = (state: IStore, action: ActionType): IStore => {
             return {
                 ...state, appState: {
                     ...state.appState, auth: action.payload
+                }
+            }
+        }
+
+        case 'SET_NOTES': {
+            return {
+                ...state, appData: {
+                    ...state.appData, stickyDefaultNote: action.payload
+                }
+            }
+        }
+        case 'ADD_NOTES': {
+            return {
+                ...state, appData: {
+                    ...state.appData, stickyDefaultNote: [
+                        ...state.appData.stickyDefaultNote, action.payload
+                    ]
                 }
             }
         }

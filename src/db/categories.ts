@@ -31,3 +31,9 @@ export const deleteCategory = async (uid: string, idCategory: string) => {
     const dbRef = connection.db.collection(`categories${uid}`).doc(idCategory);
     await dbRef.delete();
 }
+
+
+export const getCategoryByIdAsync = async (uid: string, categoryId: string) => {
+    const snapshot = await connection.db.collection(`categories${uid}`).where("id", "==", categoryId).get();
+    return snapshot.docs.map(doc => doc.data());
+}

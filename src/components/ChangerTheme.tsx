@@ -28,7 +28,7 @@ const ChangeTheme: React.FunctionComponent<ChangeThemeProps> = () => {
         style={{
           fontSize: 10,
           textAlign: "center",
-          color: !dark ? "white" : "black",
+          color: dark ? "white" : "black",
         }}
       >
         {!dark ? "Light Mode" : "Dark Mode"}

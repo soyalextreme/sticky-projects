@@ -1,13 +1,18 @@
 import * as React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, TextStyle } from "react-native";
 import { StoreContext } from "../state/Store";
 
 export interface ButtonProps {
   title: string;
   onPress: () => void;
+  style?: TextStyle;
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({ title, onPress }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({
+  title,
+  onPress,
+  style,
+}) => {
   const { useContext } = React;
 
   const { dispatch, store } = useContext(StoreContext);
@@ -23,6 +28,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({ title, onPress }) => {
       borderColor: store.appState.theme.colors.alternative,
       borderRadius: 20,
       borderWidth: 3,
+      marginVertical: 20,
     },
     Button__text: {
       color: store.appState.theme.colors.alternative,
@@ -34,7 +40,9 @@ const Button: React.FunctionComponent<ButtonProps> = ({ title, onPress }) => {
   return (
     <>
       <TouchableOpacity onPress={onPress} style={dependentStyles.Button__main}>
-        <Text style={dependentStyles.Button__text}>{title}</Text>
+        <Text style={{ ...dependentStyles.Button__text, ...style }}>
+          {title}
+        </Text>
       </TouchableOpacity>
     </>
   );

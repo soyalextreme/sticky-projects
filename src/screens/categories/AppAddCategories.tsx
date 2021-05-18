@@ -32,6 +32,15 @@ const AddCategories: React.FunctionComponent<AddCategoriesProps> = ({
   React.useEffect(() => {
     // console.log(updateActive, categoryCurrent);
     // setting inital state
+    let msg: AlertType = {
+      active: true,
+      error: true,
+      title: "Pick over the circular color",
+      msg: "Pick on the circular color to set the color selected.",
+    };
+
+    dispatch({ type: "OPEN_ALERT", payload: msg });
+
     if (updateActive) {
       setData({
         ...data,

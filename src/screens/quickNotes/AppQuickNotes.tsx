@@ -1,13 +1,14 @@
 import * as React from "react";
-import { View, Text } from "react-native";
+import MainScreenContainer from "../../components/MainScreenContainer";
+import TextTitle from "../../components/TextTitle";
 
 export interface AppQuickNotesProps {}
 
 const AppQuickNotes: React.FunctionComponent<AppQuickNotesProps> = () => {
   return (
-    <View>
-      <Text>Quick Notes</Text>
-    </View>
+    <MainScreenContainer>
+      <TextTitle text="Add a quick Timer Note!" />
+    </MainScreenContainer>
   );
 };
 

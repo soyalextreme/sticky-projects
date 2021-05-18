@@ -38,7 +38,9 @@ const AppProjects: React.FunctionComponent<AppProjectsProps> = ({
     <MainScreenContainer>
       <Button
         title="Add new Project"
-        onPress={() => navigation.navigate("Add Project", { update: false })}
+        onPress={() => {
+          navigation.navigate("Add Project", { update: false });
+        }}
       />
       <TextTitle
         text="Your projects"

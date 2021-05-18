@@ -1,9 +1,7 @@
 import * as React from "react";
 import { View, Text, TouchableOpacity, Alert } from "react-native";
 import { ProjectType } from "../../types";
-import { deleteProject } from "../db/projects";
 import { StoreContext } from "../state/Store";
-import MessageBox from "./MessageBox";
 import TextP from "./TextP";
 import TextTitle from "./TextTitle";
 
@@ -37,12 +35,19 @@ const ProjectItem: React.FunctionComponent<ProjectItemProps> = ({
         marginVertical: 20,
         width: 300,
       }}
-      onLongPress={() =>
+      onLongPress={() => {
         navigation.navigate("Add Project", {
           mod: true,
           current: item,
-        })
-      }
+        });
+      }}
+      onPress={() => {
+        navigation.navigate("Notes", {
+          projectName: item.name,
+          projectId: item.id,
+        });
+        dispatch({ type: "SET_LOADING", payload: { loading: true } });
+      }}
     >
       <TextTitle
         text={`🔻${item.name}`}

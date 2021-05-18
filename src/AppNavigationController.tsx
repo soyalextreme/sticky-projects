@@ -8,6 +8,8 @@ import AppProjects from "./screens/projects/AppProjects";
 import AppCategories from "./screens/categories/AppCategories";
 import AddCategories from "./screens/categories/AppAddCategories";
 import AppAddProject from "./screens/projects/AppAddProject";
+import AppNotes from "./screens/notes/AppNotes";
+import AddNotes from "./screens/notes/AddNotes";
 
 export interface AppNavigationControllerProps {}
 
@@ -23,8 +25,10 @@ const AppNavigationController: React.FunctionComponent<AppNavigationControllerPr
           screenOptions={{
             headerStyle: {
               backgroundColor: store.appState.theme.colors.primary,
+              borderColor: store.appState.theme.colors.alternative,
             },
             headerTitleAlign: "center",
+            headerTintColor: store.appState.theme.colors.alternative,
           }}
         >
           <Stack.Screen name="Home" component={AppHome} />
@@ -33,6 +37,8 @@ const AppNavigationController: React.FunctionComponent<AppNavigationControllerPr
           <Stack.Screen name="Add Project" component={AppAddProject} />
           <Stack.Screen name="Categories" component={AppCategories} />
           <Stack.Screen name="Add Category" component={AddCategories} />
+          <Stack.Screen name="Notes" component={AppNotes} />
+          <Stack.Screen name="Add Note" component={AddNotes} />
         </Stack.Navigator>
       </NavigationContainer>
     );

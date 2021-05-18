@@ -12,7 +12,7 @@ const NavApp: React.FunctionComponent<NavAppProps> = ({ navigation }) => {
       title: "Projects",
       redirect: "Projects",
     },
-    { title: "Quick Notes", redirect: "Quick Notes" },
+    // { title: "Quick Notes", redirect: "Quick Notes" },
     { title: "Categories", redirect: "Categories" },
   ];
 
@@ -20,6 +20,7 @@ const NavApp: React.FunctionComponent<NavAppProps> = ({ navigation }) => {
     store: {
       appState: { theme },
     },
+    dispatch,
   } = React.useContext(StoreContext);
 
   return (
@@ -37,9 +38,14 @@ const NavApp: React.FunctionComponent<NavAppProps> = ({ navigation }) => {
       {NAV_OPTIONS.map((item, idx) => (
         <TouchableOpacity
           key={idx}
-          onPress={() => navigation.navigate(item.redirect)}
+          onPress={() => {
+            navigation.navigate(item.redirect);
+            dispatch({ type: "SET_LOADING", payload: { loading: true } });
+          }}
         >
-          <Text style={{ fontWeight: "bold", fontSize: 15 }}>{item.title}</Text>
+          <Text style={{ fontWeight: "normal", fontSize: 18 }}>
+            {item.title}
+          </Text>
         </TouchableOpacity>
       ))}
     </View>

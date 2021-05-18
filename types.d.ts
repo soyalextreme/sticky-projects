@@ -26,6 +26,7 @@ export type StickyTimerNoteType = {
     timeFraction: number;
     id: string;
     title: string;
+    categoryId: string;
 }
 
 export type StickyDefaulNoteType = {
@@ -33,6 +34,7 @@ export type StickyDefaulNoteType = {
     body: string;
     done: boolean;
     id: string;
+    categoryId: string;
 }
 
 export type CategoriesType = {

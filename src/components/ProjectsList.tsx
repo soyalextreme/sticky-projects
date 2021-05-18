@@ -21,9 +21,7 @@ const ProjectsList: React.FunctionComponent<ProjectsListProps> = ({
   return (
     <ScrollView style={{ width: "120%" }}>
       {projects.map((project) => (
-        <>
-          <ProjectItem item={project} navigation={navigation} />
-        </>
+        <ProjectItem key={project.id} item={project} navigation={navigation} />
       ))}
     </ScrollView>
   );
